@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.List;
+
 public class AddTaskActivity extends AppCompatActivity {
 
     private EditText editTextTask, editTextDesc, editTextFinishBy;
@@ -25,6 +27,7 @@ public class AddTaskActivity extends AppCompatActivity {
         findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveTask();
 
             }
         });
@@ -63,6 +66,8 @@ public class AddTaskActivity extends AppCompatActivity {
                 task.setDesc(sDesc);
                 task.setFinishBy(sFinishBy);
                 task.setFinished(false);
+
+
 
                 DBClient.getInstance(getApplicationContext()).getAppDatabase()
                         .taskDao()
